@@ -15,14 +15,14 @@ MongoClient.connect('mongodb://localhost:27017/TodoApp', (err, db) => {
         return console.log('impossibile connettersi al database');
     }
     console.log('Database connesso');
-    // //FACCIO QUALCOSA COL DATABASE
-    // db.collection('Todos').insertOne({
-    //     text: 'Qualcosa da fare',
-    //     completed: false
-    // }, (err, result) => {
-    //     if (err) { throw err };
-    //     console.log(JSON.stringify(result.ops));
-    // });
+    //FACCIO QUALCOSA COL DATABASE
+    db.collection('Todos').insertOne({
+        text: 'Eat lunch',
+        completed: false
+    }, (err, result) => {
+        if (err) { throw err };
+        console.log(JSON.stringify(result.ops));
+    });
 
     // db.collection('Users').insertOne({
     //     name: 'Maurizio',
