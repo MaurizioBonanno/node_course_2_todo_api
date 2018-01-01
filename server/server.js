@@ -1,6 +1,33 @@
-var { mongoose } = require('./db/mongoose');
+const express = require('express');
+const bodyparser = require('body-parser');
+const { mongoose } = require('./db/mongoose');
+const { Todo } = require('./models/todo');
+const { User } = require('./models/user');
+
+const app = express();
 
 
+app.use(bodyparser.json());
+
+
+app.post('/todos', function(req, res) {
+    // console.log(req.body);
+    var todo = new Todo({
+        text: req.body.text
+    });
+    todo.save().then((doc) => {
+        console.log('Nota salvata con successo', doc);
+        res.send(doc);
+    }, (e) => {
+        console.log('errore nel salvataggio dei dati', e);
+        res.send(e);
+    })
+});
+
+
+app.listen(3000, function() {
+    console.log('App listening on port 3000!');
+});
 
 // //Save something
 
